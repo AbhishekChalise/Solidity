@@ -32,9 +32,11 @@ interface AggregatorV3Interface {
 }
 
 contract Interface{
+  address[] public funders;
     uint public minimumusd=50 * 1e18; // 1*10*18
  function fund() public payable{
      require(getconversionrate(msg.value) >= minimumusd,"Didn't send enough!");
+     funders.push(msg.sender);
      // 1e18 ==1*10**18 1000000000000000000
      // 18 decimals
       }
